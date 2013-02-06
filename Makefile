@@ -3,6 +3,7 @@ EXE=check_credentials
 CFLAGS=-Wall
 LDFLAGS=
 LIBS=-lcrypt
+VERSION=$(shell cat VERSION)
 
 PREFIX?=/usr/local
 INSTALL_BIN=$(PREFIX)/sbin
