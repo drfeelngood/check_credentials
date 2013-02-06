@@ -12,6 +12,11 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
+    if (geteuid() != 0) {
+        fprintf(stderr, "Error: Cannot possibly work without effective root\n");
+        exit(EXIT_FAILURE);
+     }
+    
     char *user = argv[1];
     char *plain_passwd = argv[2];
     
