@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <errno.h> 
 #include <shadow.h>
 #include <unistd.h>
 #include <crypt.h>
@@ -35,7 +36,7 @@ int main(int argc, char *argv[])
     // Encrypt the supplied password
     char *enc_passwd;
     if ( (enc_passwd = crypt(plain_passwd, shadow_entry->sp_pwdp)) == NULL ) {
-        fprintf(stderr, "Error: \n");
+        fprintf(stderr, "Error: (%d) %s\n", errno, strerror(errno));
         exit(EXIT_FAILURE);
     }
     #ifdef DEBUG
